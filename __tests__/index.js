@@ -23,7 +23,7 @@ describe('each', () => {
     expect(iteratee.mock.calls[1][1]).toBe(1);
     expect(iteratee.mock.calls[2][1]).toBe(2);
   });
-  it('passes the array as the third element to the iteratee', () => {
+  it('passes the array as the third argument to the iteratee', () => {
     const iteratee = jest.fn();
     const arr = [6, 11, 33];
     fp.each(iteratee)(arr);

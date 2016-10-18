@@ -1,5 +1,7 @@
 # JS FP
 
+[![Build Status](https://travis-ci.org/msrose/jsfp.svg?branch=master)](https://travis-ci.org/msrose/jsfp)
+
 ## Using this package
 
 Step 1: Don't use this package.
