@@ -31,4 +31,25 @@ describe('each', () => {
     expect(iteratee.mock.calls[1][2]).toBe(arr);
     expect(iteratee.mock.calls[2][2]).toBe(arr);
   });
+  it('works with objects', () => {
+    const iteratee = jest.fn();
+    const obj = { b: 88, a: 44, c: 66 };
+
+    fp.each(iteratee)(obj);
+
+    const firstArgs = iteratee.mock.calls.map(c => c[0]);
+    const secondArgs = iteratee.mock.calls.map(c => c[1]);
+
+    expect(firstArgs).toContain(44);
+    expect(firstArgs).toContain(66);
+    expect(firstArgs).toContain(88);
+
+    expect(secondArgs).toContain('a');
+    expect(secondArgs).toContain('b');
+    expect(secondArgs).toContain('c');
+
+    expect(iteratee.mock.calls[0][2]).toBe(obj);
+    expect(iteratee.mock.calls[1][2]).toBe(obj);
+    expect(iteratee.mock.calls[2][2]).toBe(obj);
+  });
 });

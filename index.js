@@ -23,20 +23,25 @@ fp.compact = () => {
 };
 
 fp.each = (iteratee) => {
-  return (arr) => {
-    for(let i = 0; i < arr.length; i++) {
-      iteratee(arr[i], i, arr);
+  return (obj) => {
+    const isArray = Array.isArray(obj);
+    let index = 0;
+    for(let prop in obj) {
+      if(obj.hasOwnProperty(prop)) {
+        iteratee(obj[prop], isArray ? index : prop, obj);
+        index++;
+      }
     }
   };
 };
 
 fp.map = (iteratee) => {
-  return (arr) => {
-    const results = [];
-    for(let i = 0; i < arr.length; i++) {
-      results.push(iteratee(arr[i], i, arr));
-    }
-    return results;
+  return (obj) => {
+    const values = [];
+    fp.each((val, key, obj) => {
+      values.push(iteratee(val, key, obj));
+    })(obj);
+    return values;
   };
 };
 
