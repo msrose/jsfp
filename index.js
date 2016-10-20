@@ -22,14 +22,18 @@ fp.compact = () => {
   };
 };
 
-fp.curry = (func, argCount = func.length) => {
+fp.curry = (func) => {
+  return fp.curryCount(func.length, func);
+};
+
+fp.curryCount = (arity, func) => {
   return (...args) => {
-    if(args.length >= argCount) {
+    if(args.length >= arity) {
       return func(...args);
     } else {
-      return fp.curry(
-        (...nextArgs) => func(...args.concat(nextArgs)),
-        argCount - args.length
+      return fp.curryCount(
+        arity - args.length,
+        (...nextArgs) => func(...args.concat(nextArgs))
       );
     }
   };
