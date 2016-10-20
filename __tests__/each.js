@@ -6,17 +6,17 @@ describe('each', () => {
   });
   it('calls the iteratee for each item in the list', () => {
     const iteratee = jest.fn();
-    fp.each(iteratee, [1,2,3]);
+    fp.each(iteratee, [1, 2, 3]);
     expect(iteratee).toHaveBeenCalledTimes(3);
   });
   it('is auto-curried', () => {
     const iteratee = jest.fn();
-    fp.each(iteratee)([1,2,3]);
+    fp.each(iteratee)([1, 2, 3]);
     expect(iteratee).toHaveBeenCalledTimes(3);
   });
   it('passes the current value as first argument to the iteratee', () => {
     const iteratee = jest.fn();
-    fp.each(iteratee)([8,34,25]);
+    fp.each(iteratee)([8, 34, 25]);
     expect(iteratee.mock.calls[0][0]).toBe(8);
     expect(iteratee.mock.calls[1][0]).toBe(34);
     expect(iteratee.mock.calls[2][0]).toBe(25);

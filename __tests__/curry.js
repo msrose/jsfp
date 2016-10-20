@@ -30,6 +30,6 @@ describe('curry', () => {
     expect(curriedFunc(1)(2, 3)).toBe(6);
   });
   it('does not fail when given too many arguments', () => {
-    expect(fp.curry((a, b) => a + b)(1,2,3)).toBe(3);
+    expect(fp.curry((a, b) => a + b)(1, 2, 3)).toBe(3);
   });
 });

@@ -4,7 +4,9 @@
   "description": "JavaScript functional programming",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "tdd": "jest --watch",
+    "lint": "eslint ."
   },
   "keywords": [
     "functional"
@@ -12,7 +14,7 @@
   "author": "Michael Rose",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^3.8.1",
     "jest": "^16.0.1"
-  },
-  "dependencies": {}
+  }
 }

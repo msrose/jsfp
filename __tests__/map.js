@@ -9,13 +9,13 @@ describe('map', () => {
   });
   it('passes the current value as first argument to the iteratee', () => {
     const iteratee = jest.fn();
-    fp.map(iteratee)([8,34,25]);
+    fp.map(iteratee)([8, 34, 25]);
     expect(iteratee.mock.calls[0][0]).toBe(8);
     expect(iteratee.mock.calls[1][0]).toBe(34);
     expect(iteratee.mock.calls[2][0]).toBe(25);
   });
   it('is auto-curried', () => {
-    expect(fp.map(n => n * n, [1 , 2, 3])).toEqual([1, 4, 9]);
+    expect(fp.map(n => n * n, [1, 2, 3])).toEqual([1, 4, 9]);
   });
   it('passes the index as the second argument to the iteratee', () => {
     const iteratee = jest.fn();
@@ -39,7 +39,7 @@ describe('map', () => {
   });
   it('works with objects', () => {
     let obj = { a: 1, b: 2, c: 3 };
-    expect(fp.map(n => n * n)(obj)).toEqual([1,4,9]);
+    expect(fp.map(n => n * n)(obj)).toEqual([1, 4, 9]);
 
     const iteratee = jest.fn();
     obj = { b: 88, a: 44, c: 66 };

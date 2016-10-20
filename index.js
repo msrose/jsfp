@@ -32,7 +32,7 @@ fp.chunk = (size, arr) => {
 fp.compact = (arr) => {
   const truthies = [];
   for(let i = 0; i < arr.length; i++) {
-    if(!!arr[i]) {
+    if(arr[i]) {
       truthies.push(arr[i]);
     }
   }
