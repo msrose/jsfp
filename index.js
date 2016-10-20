@@ -46,7 +46,7 @@ fp.curryCount = curryCount;
 fp.each = (iteratee, obj) => {
   const isArray = Array.isArray(obj);
   let index = 0;
-  for(let prop in obj) {
+  for(const prop in obj) {
     if(obj.hasOwnProperty(prop)) {
       iteratee(obj[prop], isArray ? index : prop, obj);
       index++;
@@ -63,7 +63,7 @@ fp.map = (iteratee, obj) => {
 };
 
 // auto-curry everything
-for(let func in fp) {
+for(const func in fp) {
   if(fp.hasOwnProperty(func)) {
     fp[func] = curry(fp[func]);
   }
