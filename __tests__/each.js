@@ -6,6 +6,11 @@ describe('each', () => {
   });
   it('calls the iteratee for each item in the list', () => {
     const iteratee = jest.fn();
+    fp.each(iteratee, [1,2,3]);
+    expect(iteratee).toHaveBeenCalledTimes(3);
+  });
+  it('is auto-curried', () => {
+    const iteratee = jest.fn();
     fp.each(iteratee)([1,2,3]);
     expect(iteratee).toHaveBeenCalledTimes(3);
   });

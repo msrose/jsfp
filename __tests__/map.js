@@ -5,7 +5,7 @@ describe('map', () => {
     expect(fp.map()).toBeInstanceOf(Function);
   });
   it('returns an array when called twice', () => {
-    expect(fp.map()([])).toBeInstanceOf(Array);
+    expect(fp.map(() => {})([])).toBeInstanceOf(Array);
   });
   it('passes the current value as first argument to the iteratee', () => {
     const iteratee = jest.fn();
@@ -13,6 +13,9 @@ describe('map', () => {
     expect(iteratee.mock.calls[0][0]).toBe(8);
     expect(iteratee.mock.calls[1][0]).toBe(34);
     expect(iteratee.mock.calls[2][0]).toBe(25);
+  });
+  it('is auto-curried', () => {
+    expect(fp.map(n => n * n, [1 , 2, 3])).toEqual([1, 4, 9]);
   });
   it('passes the index as the second argument to the iteratee', () => {
     const iteratee = jest.fn();

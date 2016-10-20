@@ -13,6 +13,11 @@ describe('curry', () => {
     const add1 = adder(1);
     expect(add1(2)).toBe(3);
   });
+  it('is auto-curried', () => {
+    const adder = fp.curry((a, b) => a + b);
+    const add1 = adder(1);
+    expect(add1()()(2)).toBe(3);
+  });
   it('curries a three arg function', () => {
     const func = (a, b, c) => a + b + c;
     const curriedFunc = fp.curry(func);
