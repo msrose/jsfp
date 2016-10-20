@@ -22,6 +22,19 @@ fp.compact = () => {
   };
 };
 
+fp.curry = (func, argCount = func.length) => {
+  return (...args) => {
+    if(args.length >= argCount) {
+      return func(...args);
+    } else {
+      return fp.curry(
+        (...nextArgs) => func(...args.concat(nextArgs)),
+        argCount - args.length
+      );
+    }
+  };
+};
+
 fp.each = (iteratee) => {
   return (obj) => {
     const isArray = Array.isArray(obj);
